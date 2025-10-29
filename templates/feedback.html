@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block title %}Feedback - Hostel Complaint Management System{% endblock %}
+
+{% block content %}
+<div class="feedback-container">
+    <div class="feedback-card">
+        <div class="feedback-header">
+            <h1>📝 Provide Feedback</h1>
+            <p>Your complaint has been resolved. Please share your experience!</p>
+        </div>
+
+        <div class="complaint-summary">
+            <h3>Complaint Details:</h3>
+            <div class="complaint-info">
+                <p><strong>Category:</strong> {{ complaint.category }}</p>
+                <p><strong>Description:</strong> {{ complaint.description }}</p>
+                <p><strong>Submitted:</strong> {{ complaint.created_at.strftime('%d %b %Y, %I:%M %p') }}</p>
+                {% if complaint.image_path %}
+                    <p><strong>Image:</strong> <a href="{{ url_for('static', filename='uploads/' + complaint.image_path) }}" target="_blank">View Image</a></p>
+                {% endif %}
+            </div>
+        </div>
+
+        {% if existing_feedback %}
+            <div class="existing-feedback">
+                <h3>Your Previous Feedback:</h3>
+                <div class="feedback-display">
+                    <div class="rating">
+                        {% for i in range(existing_feedback.rating) %}⭐{% endfor %}
+                        {% for i in range(5 - existing_feedback.rating) %}☆{% endfor %}
+                        <span class="rating-text">{{ existing_feedback.rating }}/5 stars</span>
+                    </div>
+                    {% if existing_feedback.comment %}
+                        <p class="feedback-comment">"{{ existing_feedback.comment }}"</p>
+                    {% endif %}
+                    <p class="feedback-date">Submitted: {{ existing_feedback.submitted_at.strftime('%d %b %Y, %I:%M %p') }}</p>
+                </div>
+                <p class="update-note">You can update your feedback below:</p>
+            </div>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('submit_feedback') }}" class="feedback-form">
+            <input type="hidden" name="complaint_id" value="{{ complaint.id }}">
+            
+            <div class="form-group">
+                <label for="rating">Rating:</label>
+                <div class="rating-input">
+                    <input type="radio" id="rating-1" name="rating" value="1" {% if existing_feedback and existing_feedback.rating == 1 %}checked{% endif %}>
+                    <label for="rating-1">⭐</label>
+                    
+                    <input type="radio" id="rating-2" name="rating" value="2" {% if existing_feedback and existing_feedback.rating == 2 %}checked{% endif %}>
+                    <label for="rating-2">⭐</label>
+                    
+                    <input type="radio" id="rating-3" name="rating" value="3" {% if existing_feedback and existing_feedback.rating == 3 %}checked{% endif %}>
+                    <label for="rating-3">⭐</label>
+                    
+                    <input type="radio" id="rating-4" name="rating" value="4" {% if existing_feedback and existing_feedback.rating == 4 %}checked{% endif %}>
+                    <label for="rating-4">⭐</label>
+                    
+                    <input type="radio" id="rating-5" name="rating" value="5" {% if existing_feedback and existing_feedback.rating == 5 %}checked{% endif %}>
+                    <label for="rating-5">⭐</label>
+                </div>
+                <small>Rate your experience (1 = Poor, 5 = Excellent)</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="comment">Comment (Optional):</label>
+                <textarea id="comment" name="comment" rows="4" placeholder="Share additional details about your experience...">{% if existing_feedback %}{{ existing_feedback.comment }}{% endif %}</textarea>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    {% if existing_feedback %}Update Feedback{% else %}Submit Feedback{% endif %}
+                </button>
+                <a href="{{ url_for('student_dashboard') }}" class="btn btn-outline">Back to Dashboard</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Rating input enhancement
+document.addEventListener('DOMContentLoaded', function() {
+    const ratingInputs = document.querySelectorAll('input[name="rating"]');
+    const ratingLabels = document.querySelectorAll('input[name="rating"] + label');
+    
+    ratingInputs.forEach((input, index) => {
+        input.addEventListener('change', function() {
+            // Update visual feedback
+            ratingLabels.forEach((label, labelIndex) => {
+                if (labelIndex <= index) {
+                    label.style.color = '#ffc107';
+                } else {
+                    label.style.color = '#ccc';
+                }
+            });
+        });
+        
+        // Trigger change event if already checked
+        if (input.checked) {
+            input.dispatchEvent(new Event('change'));
+        }
+    });
+    
+    // Hover effect for rating labels
+    ratingLabels.forEach((label, index) => {
+        label.addEventListener('mouseenter', function() {
+            ratingLabels.forEach((l, i) => {
+                if (i <= index) {
+                    l.style.color = '#ffc107';
+                } else {
+                    l.style.color = '#ccc';
+                }
+            });
+        });
+    });
+    
+    document.querySelector('.rating-input').addEventListener('mouseleave', function() {
+        const checkedInput = document.querySelector('input[name="rating"]:checked');
+        if (checkedInput) {
+            checkedInput.dispatchEvent(new Event('change'));
+        } else {
+            ratingLabels.forEach(label => {
+                label.style.color = '#ccc';
+            });
+        }
+    });
+});
+</script>
+{% endblock %}

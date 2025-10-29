@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard - Hostel Complaint Management System{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <h1>Admin Dashboard</h1>
+        <p>Manage all hostel complaints and feedback</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters-card">
+        <h3>🔍 Filter Complaints</h3>
+        <form method="GET" action="{{ url_for('admin_dashboard') }}" class="filters-form">
+            <div class="filter-group">
+                <label for="status">Status:</label>
+                <select id="status" name="status">
+                    <option value="">All Statuses</option>
+                    <option value="Pending" {% if current_filters.status == 'Pending' %}selected{% endif %}>Pending</option>
+                    <option value="In Progress" {% if current_filters.status == 'In Progress' %}selected{% endif %}>In Progress</option>
+                    <option value="Resolved" {% if current_filters.status == 'Resolved' %}selected{% endif %}>Resolved</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="hostel">Hostel:</label>
+                <select id="hostel" name="hostel">
+                    <option value="">All Hostels</option>
+                    {% for hostel in all_hostels %}
+                        <option value="{{ hostel }}" {% if current_filters.hostel == hostel %}selected{% endif %}>{{ hostel }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="category">Category:</label>
+                <select id="category" name="category">
+                    <option value="">All Categories</option>
+                    {% for category in all_categories %}
+                        <option value="{{ category }}" {% if current_filters.category == category %}selected{% endif %}>{{ category }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <button type="submit" class="btn btn-secondary">Apply Filters</button>
+            <a href="{{ url_for('admin_dashboard') }}" class="btn btn-outline">Clear Filters</a>
+        </form>
+    </div>
+
+    <!-- Complaints List -->
+    <div class="complaints-admin">
+        <h2>📋 All Complaints ({{ complaints|length }} found)</h2>
+        
+        {% if complaints %}
+            <div class="complaints-table">
+                {% for complaint in complaints %}
+                <div class="complaint-row">
+                    <div class="complaint-info">
+                        <div class="complaint-header">
+                            <h3>{{ complaint.category }}</h3>
+                            <span class="status-badge status-{{ complaint.status.lower().replace(' ', '-') }}">
+                                {{ complaint.status }}
+                            </span>
+                        </div>
+                        <p class="complaint-description">{{ complaint.description }}</p>
+                        <div class="complaint-meta">
+                            <span class="student-info">
+                                <strong>{{ complaint.user.name }}</strong> 
+                                ({{ complaint.user.hostel }} - Room {{ complaint.user.room_no }})
+                            </span>
+                            <span class="complaint-date">{{ complaint.created_at.strftime('%d %b %Y, %I:%M %p') }}</span>
+                            {% if complaint.image_path %}
+                                <a href="{{ url_for('static', filename='uploads/' + complaint.image_path) }}" target="_blank" class="complaint-image">📷 View Image</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="complaint-actions">
+                        <form method="POST" action="{{ url_for('update_status') }}" class="status-form">
+                            <input type="hidden" name="complaint_id" value="{{ complaint.id }}">
+                            <select name="status" class="status-select">
+                                <option value="Pending" {% if complaint.status == 'Pending' %}selected{% endif %}>Pending</option>
+                                <option value="In Progress" {% if complaint.status == 'In Progress' %}selected{% endif %}>In Progress</option>
+                                <option value="Resolved" {% if complaint.status == 'Resolved' %}selected{% endif %}>Resolved</option>
+                            </select>
+                            <button type="submit" class="btn btn-small">Update</button>
+                        </form>
+                        
+                        {% if complaint.status == 'Resolved' and complaint.feedback %}
+                            <div class="feedback-display">
+                                <strong>Feedback:</strong>
+                                <div class="rating">
+                                    {% for i in range(complaint.feedback.rating) %}⭐{% endfor %}
+                                    {% for i in range(5 - complaint.feedback.rating) %}☆{% endfor %}
+                                </div>
+                                {% if complaint.feedback.comment %}
+                                    <p class="feedback-comment">"{{ complaint.feedback.comment }}"</p>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty-state">
+                <p>No complaints found matching the current filters.</p>
+                <p>Try adjusting your filter criteria or check back later.</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

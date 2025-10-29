@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}Student Dashboard - Hostel Complaint Management System{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <h1>Student Dashboard</h1>
+        <p>Welcome, {{ user.name }}! ({{ user.hostel }} - Room {{ user.room_no }})</p>
+    </div>
+
+    <div class="dashboard-grid">
+        <!-- Submit New Complaint -->
+        <div class="dashboard-card">
+            <h2>📝 Submit New Complaint</h2>
+            <form method="POST" action="{{ url_for('submit_complaint') }}" enctype="multipart/form-data" class="complaint-form">
+                <div class="form-group">
+                    <label for="category">Category:</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select Category</option>
+                        <option value="Electrical">Electrical (Fans, Lights, Power)</option>
+                        <option value="Plumbing">Plumbing (Water, Toilets, Showers)</option>
+                        <option value="WiFi">WiFi & Internet</option>
+                        <option value="Furniture">Furniture (Beds, Tables, Chairs)</option>
+                        <option value="Security">Security & Safety</option>
+                        <option value="Cleaning">Cleaning & Maintenance</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" rows="4" placeholder="Describe the issue in detail..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="image">Image (Optional):</label>
+                    <input type="file" id="image" name="image" accept="image/*">
+                    <small>Supported formats: JPG, PNG, GIF (Max 16MB)</small>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Submit Complaint</button>
+            </form>
+        </div>
+
+        <!-- My Complaints -->
+        <div class="dashboard-card">
+            <h2>📋 My Complaints</h2>
+            {% if complaints %}
+                <div class="complaints-list">
+                    {% for complaint in complaints %}
+                    <div class="complaint-item">
+                        <div class="complaint-header">
+                            <h3>{{ complaint.category }}</h3>
+                            <span class="status-badge status-{{ complaint.status.lower().replace(' ', '-') }}">
+                                {{ complaint.status }}
+                            </span>
+                        </div>
+                        <p class="complaint-description">{{ complaint.description }}</p>
+                        <div class="complaint-meta">
+                            <span class="complaint-date">{{ complaint.created_at.strftime('%d %b %Y, %I:%M %p') }}</span>
+                            {% if complaint.image_path %}
+                                <a href="{{ url_for('static', filename='uploads/' + complaint.image_path) }}" target="_blank" class="complaint-image">📷 View Image</a>
+                            {% endif %}
+                        </div>
+                        {% if complaint.status == 'Resolved' %}
+                            <div class="complaint-actions">
+                                {% if complaint.feedback %}
+                                    <span class="feedback-submitted">✅ Feedback Submitted ({{ complaint.feedback.rating }}⭐)</span>
+                                {% else %}
+                                    <a href="{{ url_for('feedback_form', complaint_id=complaint.id) }}" class="btn btn-secondary">Provide Feedback</a>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="empty-state">
+                    <p>No complaints submitted yet.</p>
+                    <p>Use the form on the left to submit your first complaint!</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
