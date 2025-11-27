@@ -1,0 +1,461 @@
+================================================================================
+HOSTEL COMPLAINT MANAGEMENT SYSTEM - SIMULATION DEMO SCRIPT
+================================================================================
+Duration: 10 Minutes Maximum
+Group Number: [INSERT YOUR GROUP NUMBER]
+Members:
+1. [Member 1 Name] - [Matric Number] - Role: Introduction & Login/Registration
+2. [Member 2 Name] - [Matric Number] - Role: Student Dashboard & Complaint Submission
+3. [Member 3 Name] - [Matric Number] - Role: Admin Dashboard & Status Management
+4. [Member 4 Name] - [Matric Number] - Role: Feedback & Navigation/Conclusion
+
+================================================================================
+
+[00:00 - 01:30] SEGMENT 1: INTRODUCTION & AUTHENTICATION
+Presenter: Member 1
+================================================================================
+
+[Member 1 - ON SCREEN]
+"Hello everyone! Welcome to our Hostel Complaint Management System demonstration."
+
+[SHOW: Title slide with group details]
+"Today, we are Group [NUMBER] presenting our web application project:
+- [Member 1 Name] - [Matric Number]
+- [Member 2 Name] - [Matric Number]
+- [Member 3 Name] - [Matric Number]
+- [Member 4 Name] - [Matric Number]"
+
+[NAVIGATE TO: http://localhost:5000]
+"This system allows hostel students to report facility issues and track their resolution. Let me show you our front-end features."
+
+[DEMONSTRATION POINT 1: Standardized Template & Color Theme]
+"First, notice our clean and professional interface. We've implemented:
+- A modern gradient color scheme with purple and blue accents
+- Consistent navigation bar across all pages
+- Responsive design that works on all devices"
+
+[CLICK ON: Login page]
+"The login page demonstrates our standardized template with:
+- Professional typography using Inter font family
+- Smooth animations and hover effects
+- Clear visual hierarchy with buttons and forms"
+
+[DEMONSTRATION POINT 2: Registration Process]
+[CLICK ON: Register Tab]
+"Let me demonstrate user registration. I'll create a new student account:"
+
+[FILL IN FORM:]
+- Name: "John Smith"
+- Email: "john.smith@student.com"
+- Matric Number: "A20CS1234"
+- Hostel: Select "Hostel A"
+- Room Number: "A-301"
+- Password: ******** (show typing but don't reveal) 
+
+[CLICK: Register button]
+"Notice the form validation - all fields are required and the system provides instant feedback."
+
+[SHOW: Success message]
+"Upon successful registration, we see a flash notification message."
+
+[DEMONSTRATION POINT 3: Login Functionality]
+[NAVIGATE TO: Login tab]
+"Now let's login with our credentials:"
+[FILL IN:]
+- Email: "john.smith@student.com"
+- Password: ********
+
+[CLICK: Login button]
+"The system authenticates and redirects us to the student dashboard."
+
+"This concludes our authentication demonstration. Over to [Member 2 Name] for the student features."
+
+================================================================================
+
+[01:30 - 04:00] SEGMENT 2: STUDENT DASHBOARD & COMPLAINT SUBMISSION
+Presenter: Member 2
+================================================================================
+
+[Member 2 - ON SCREEN]
+"Thank you, [Member 1]. I'll now demonstrate the core student functionalities."
+
+[DEMONSTRATION POINT 4: Navigation Links]
+"At the top, notice our navigation system showing:
+- Welcome message with student name
+- 'My Complaints' link for dashboard
+- 'Logout' option
+All navigation links are functional and responsive."
+
+[SHOW: Student Dashboard]
+"This is the student dashboard - the main hub for complaint management. Let me highlight the key features:"
+
+[SCROLL THROUGH PAGE]
+"The dashboard is divided into two main sections:
+1. Submit New Complaint Form
+2. My Complaints List with status tracking"
+
+[DEMONSTRATION POINT 5: Submit Complaint Form]
+"Let's submit a new complaint. Notice the form structure:"
+
+[FILL IN FORM STEP BY STEP:]
+"Title: 'Broken Air Conditioner in Room A-301'"
+
+[SELECT CATEGORY]
+"Category: Select 'Electrical Issues' from dropdown"
+(Point out other options: Plumbing, Furniture, Cleanliness, Internet, Others)
+
+[TYPE DESCRIPTION]
+"Description: 'The air conditioner in my room has stopped working since yesterday. The room temperature is very high and affecting my studies. Please fix as soon as possible.'"
+
+[SHOW: Character counter]
+"Notice the character counter at the bottom - it shows remaining characters and turns red when approaching the limit. This is a great UX feature."
+
+[DEMONSTRATION POINT 6: Image Upload with Preview]
+[CLICK: Choose File button]
+"We can attach an image for evidence. Let me select a photo:"
+
+[SELECT: An image file]
+"Watch what happens - the system provides:
+- Real-time image preview
+- File name display
+- File size validation (max 16MB)
+- File type validation (only JPG, PNG, GIF accepted)"
+
+[SHOW: Image preview appearing]
+"The preview shows immediately, confirming the upload before submission."
+
+[CLICK: Submit Complaint button]
+"Now submitting..."
+
+[SHOW: Success notification]
+"Perfect! We see a success message, and the complaint appears in our list below."
+
+[DEMONSTRATION POINT 7: Complaint Tracking]
+[SCROLL TO: My Complaints List]
+"Here's our complaints table showing:
+- Complaint ID for reference
+- Title and category
+- Status with color-coded badges
+- Submission date and time
+- Attached images (clickable for full view)
+- Action button to provide feedback"
+
+[SHOW: Different status colors]
+"Status badges are color-coded:
+- Yellow for 'Pending' complaints
+- Blue for 'In Progress' 
+- Green for 'Resolved' issues"
+
+[CLICK ON: Image thumbnail]
+"Clicking any image opens it in full size - very useful for administrators reviewing complaints."
+
+[DEMONSTRATE: Smooth scrolling]
+"Notice the smooth scrolling animation as we navigate through the page."
+
+"Let me create one more complaint quickly to show the system handles multiple entries:"
+
+[SUBMIT SECOND COMPLAINT - QUICK]
+- Title: "Damaged Study Table"
+- Category: "Furniture Issues"
+- Description: "The study table in my room has a broken leg and is wobbling."
+- (Skip image this time)
+- Click Submit
+
+"Excellent! Both complaints now appear in our list."
+
+"Now let's see how administrators manage these complaints. [Member 3 Name], over to you."
+
+================================================================================
+
+[04:00 - 07:00] SEGMENT 3: ADMIN DASHBOARD & STATUS MANAGEMENT
+Presenter: Member 3
+================================================================================
+
+[Member 3 - ON SCREEN]
+"Thank you, [Member 2]. Now I'll demonstrate the administrative features."
+
+[CLICK: Logout]
+"Let me logout from the student account..."
+
+[NAVIGATE TO: Login]
+"...and login as an administrator."
+
+[LOGIN AS ADMIN]
+- Email: "admin@hostel.com"
+- Password: ******** 
+
+[CLICK: Login]
+
+[SHOW: Admin Dashboard]
+"Welcome to the admin dashboard - a completely different interface with powerful management tools."
+
+[DEMONSTRATION POINT 8: Admin Interface Overview]
+"The admin dashboard shows:
+- Total number of complaints at a glance
+- Comprehensive filter system
+- All complaints from all students
+- Status update capabilities"
+
+[SCROLL THROUGH PAGE]
+"Notice the professional card-based layout and clear information hierarchy."
+
+[DEMONSTRATION POINT 9: Filter System]
+"One of our most important features is the advanced filtering system. Let me demonstrate:"
+
+[CLICK: Status dropdown]
+"Filter by status: All, Pending, In Progress, or Resolved"
+
+[SELECT: Pending]
+"Selecting 'Pending' - watch the page automatically refresh showing only pending complaints."
+
+[SHOW: Filtered results]
+"The system now displays only complaints awaiting action. This helps administrators prioritize work."
+
+[RESET FILTER]
+[SELECT: All from Status dropdown]
+
+[CLICK: Hostel dropdown]
+"We can also filter by hostel:"
+[SHOW OPTIONS: All, Hostel A, B, C, D]
+
+[SELECT: Hostel A]
+"Now showing only complaints from Hostel A."
+
+[RESET FILTER]
+
+[CLICK: Category dropdown]
+"And filter by category:"
+[SHOW: All category options]
+
+[SELECT: Electrical Issues]
+"Filtering for electrical problems only."
+
+[RESET TO: All filters]
+"These filters work independently or can be combined for powerful searching."
+
+[DEMONSTRATION POINT 10: Status Update Workflow]
+"Now let's update a complaint status. This demonstrates our proper working order of buttons and forms."
+
+[LOCATE: John Smith's first complaint about Air Conditioner]
+"Here's the air conditioner complaint from John Smith."
+
+[CLICK: Status dropdown for that complaint]
+"Currently 'Pending'. Let me change it to 'In Progress':"
+
+[SELECT: In Progress]
+
+[CLICK: Update button]
+[SHOW: Confirmation dialog]
+"Notice the confirmation dialog - this prevents accidental updates."
+
+[CLICK: OK]
+"Confirming..."
+
+[SHOW: Loading state]
+"The button shows 'Updating...' with a loading state for good UX."
+
+[SHOW: Success notification]
+"Success! The status badge changes color to blue, and John will see this update in his dashboard."
+
+[DEMONSTRATE: Another status update]
+"Let me mark the furniture complaint as resolved:"
+
+[FIND: Damaged Table complaint]
+[CHANGE STATUS TO: Resolved]
+[CLICK: Update]
+[CONFIRM]
+
+[SHOW: Green status badge]
+"Perfect! Now it's marked as resolved with a green badge."
+
+[DEMONSTRATION POINT 11: View Attached Images]
+[CLICK ON: Image thumbnail in complaints list]
+"Administrators can view all attached images to better understand the issues."
+
+[SHOW: Full-size image]
+"Images open in full resolution for detailed inspection."
+
+[CLOSE IMAGE]
+
+[SCROLL TO: Bottom of page]
+"All hyperlinks and buttons work correctly with proper hover effects and visual feedback."
+
+"The admin interface provides everything needed for efficient complaint management. Now for the feedback system - [Member 4 Name], please continue."
+
+================================================================================
+
+[07:00 - 09:30] SEGMENT 4: FEEDBACK SYSTEM & NAVIGATION REVIEW
+Presenter: Member 4
+================================================================================
+
+[Member 4 - ON SCREEN]
+"Thank you, [Member 3]. I'll demonstrate the feedback system and review our navigation structure."
+
+[CLICK: Logout from admin]
+[LOGIN: Back as student (john.smith@student.com)]
+
+[NAVIGATE TO: Student Dashboard]
+
+[DEMONSTRATION POINT 12: Feedback Functionality]
+"When a complaint is resolved, students can provide feedback. Let's see how:"
+
+[LOCATE: The resolved Damaged Table complaint]
+"Here's our resolved complaint. Notice the 'Provide Feedback' button is now active."
+
+[CLICK: Provide Feedback button]
+
+[SHOW: Feedback form page]
+"This opens our dedicated feedback form with:
+- Complaint details reminder
+- Star rating system
+- Comment box for detailed feedback"
+
+[DEMONSTRATION: Rating System]
+"Let me rate the service:"
+[SELECT: 5 stars]
+"Clicking stars provides visual feedback with highlight effects."
+
+[TYPE IN COMMENT BOX:]
+"Comments: 'The maintenance team responded quickly and fixed the table within 24 hours. Very satisfied with the service!'"
+
+[SHOW: Character limit reminder]
+"Notice the form has proper validation and character limits."
+
+[CLICK: Submit Feedback button]
+
+[SHOW: Success message]
+"Feedback submitted successfully!"
+
+[REDIRECT TO: Student Dashboard]
+"The system redirects back to the dashboard, and the feedback status updates."
+
+[SHOW: Feedback provided indicator]
+"The complaint now shows that feedback has been provided."
+
+[DEMONSTRATION POINT 13: Complete Navigation Review]
+"Now let me demonstrate our comprehensive navigation system:"
+
+[CLICK: Welcome message area]
+"The persistent navigation bar shows:
+- System name/logo (🏠 Hostel Complaints)
+- User name
+- Dashboard link
+- Logout option"
+
+[HOVER OVER: Each navigation link]
+"All links have hover effects showing they're interactive."
+
+[CLICK: My Complaints link]
+"The 'My Complaints' link returns to dashboard from any page."
+
+[NAVIGATE: Through different sections]
+"Within the dashboard:
+- Submit Complaint section at the top
+- My Complaints list below
+- Smooth scrolling between sections"
+
+[SCROLL UP AND DOWN]
+"Notice the smooth scrolling animation - excellent for user experience."
+
+[DEMONSTRATION POINT 14: Responsive Design & Template Consistency]
+"Let me highlight our standardized template across all pages:"
+
+[ZOOM OUT slightly to show full page]
+"Every page follows the same structure:
+- Navigation bar at top
+- Main content area with consistent padding
+- Footer at bottom
+- Same color scheme throughout"
+
+[NAVIGATE TO: Login page]
+"Login page - same template."
+
+[BACK TO: Dashboard]
+"Dashboard - same template."
+
+"This consistency is crucial for professional web applications."
+
+[DEMONSTRATION POINT 15: Additional UX Features]
+"Let me show some advanced features:"
+
+[HOVER OVER: Flash messages]
+"Flash notifications appear at the top and auto-dismiss after 5 seconds."
+
+[PRESS: Escape key]
+"You can also dismiss them with the Escape key."
+
+[SHOW: Form validation]
+[TRY TO: Submit empty complaint form]
+"Form validation prevents empty submissions:"
+
+[CLICK: Submit without filling]
+[SHOW: Required field highlighting]
+"Required fields highlight in red with helpful messages."
+
+[TYPE IN: A field]
+"As soon as you type, the error styling disappears."
+
+[DEMONSTRATE: Smooth page transitions]
+"All page transitions are smooth with proper loading states."
+
+"This demonstrates our attention to detail in user experience."
+
+================================================================================
+
+[09:30 - 10:00] SEGMENT 5: CONCLUSION & FEATURE SUMMARY
+Presenter: Member 4 (continued)
+================================================================================
+
+"Let me summarize the key features we've demonstrated today:"
+
+[SHOW: Screen with dashboard visible]
+
+[SHOW: Group details slide again]
+"Thank you for watching our demonstration!
+
+Group [NUMBER]:
+- [Member 1 Name] - [Matric Number]
+- [Member 2 Name] - [Matric Number]
+- [Member 3 Name] - [Matric Number]
+- [Member 4 Name] - [Matric Number]"
+
+"For any questions, please feel free to contact our team. Thank you!"
+
+[FADE OUT]
+
+================================================================================
+END OF SCRIPT
+================================================================================
+
+TECHNICAL NOTES FOR RECORDING:
+- Ensure application is running before recording: python app.py
+- Use screen recording software with audio: OBS Studio, Camtasia, or similar
+- Record at 1080p resolution minimum for clarity
+- Keep cursor movements smooth and deliberate
+- Pause briefly at each feature to let viewers observe
+- Speak clearly and at moderate pace
+- Test run the script once before final recording
+- Keep total duration under 10 minutes (aim for 9:30)
+- Add title slides between segments if time permits
+- Include group details slide at beginning and end
+
+BACKUP ACCOUNTS TO PREPARE:
+- Admin: admin@hostel.com / admin123
+- Student 1: john.smith@student.com / [password you set]
+- Have 2-3 sample complaints already created if needed
+- Have sample images ready in an easy-to-access folder
+
+QUALITY CHECKLIST BEFORE RECORDING:
+☑ Application running smoothly
+☑ Database has some sample data
+☑ Browser zoom at 100% or 110% for visibility
+☑ Close unnecessary browser tabs
+☑ Clear browser cache if needed
+☑ Test all features work correctly
+☑ Microphone audio quality check
+☑ Screen recording settings optimized
+☑ Script printed or on second monitor
+☑ Timer ready to track 10-minute limit
+
+================================================================================
+

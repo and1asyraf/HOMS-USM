@@ -750,12 +750,12 @@ The proposed system follows industry best practices and provides a solid foundat
 
 ✅ User registration and authentication  
 ✅ Complaint submission with image upload  
-✅ Complaint status tracking  
-✅ Admin dashboard with filtering  
-✅ Status management workflow  
-✅ Feedback system with ratings  
-✅ Responsive design  
-✅ Session-based security  
+✅ Complaint status tracking   
+✅ Admin dashboard with filtering   
+✅ Status management workflow   
+✅ Feedback system with ratings   
+✅ Responsive design   
+✅ Session-based security   
 
 **Total Core Functionalities: 7 (Exceeds requirement of 4/5)**
 
